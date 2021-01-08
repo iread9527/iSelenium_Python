@@ -14,6 +14,7 @@ class ISelenium(unittest.TestCase):
     # 读入配置文件
     def get_config(self):
         config = configparser.ConfigParser()
+        print("HOME地址是: "+os.environ['HOME'])
         config.read(os.path.join(os.environ['HOME'], 'iselenium.ini'))
         return config
 
@@ -34,7 +35,7 @@ class ISelenium(unittest.TestCase):
         if using_headless is not None and using_headless.lower() == 'true':
             print('使用无界面方式运行')
             chrome_options.add_argument("--headless")
-
+        print(config.get('driver', 'chrome_driver'))
         self.driver = webdriver.Chrome(executable_path=config.get('driver', 'chrome_driver'),
                                        options=chrome_options)
 
