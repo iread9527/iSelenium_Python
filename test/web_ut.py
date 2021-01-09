@@ -14,8 +14,8 @@ class ISelenium(unittest.TestCase):
     # 读入配置文件
     def get_config(self):
         config = configparser.ConfigParser()
-        print("HOME地址是: "+os.environ['HOME'])
-        config.read(os.path.join(os.environ['HOME'], 'iselenium.ini'))
+        root_dir = os.path.dirname(os.path.dirname(__file__))
+        config.read(os.path.join(root_dir, 'iselenium.ini'))
         return config
 
     def tearDown(self):
